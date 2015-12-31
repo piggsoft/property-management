@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="js/jquery.js"></script>
+</head>
+<body>
+<div>
+    <label> url &nbsp;&nbsp;&nbsp;&nbsp;:
+        <input id="url" name="url" value="http://localhost:8080"/>
+    </label>
+    <br>
+    <label> path&nbsp;&nbsp;&nbsp;&nbsp;:
+        <input id="path" name="path"/>
+    </label>
+    <br>
+    <label> callbackName:
+        <input id="callbackName" name="callbackName" value="callback"/>
+    </label>
+    <br>
+    <label> params&nbsp;&nbsp;&nbsp;:
+        <textarea id="params" cols="40" rows="10"></textarea>
+    </label>
+    <br>
+    <button id="send" style="margin-left: 350px;">Send</button>
+</div>
+
+</body>
+<script>
+
+    $(function() {
+        $("#send").bind("click", function() {
+            var url = $("#url").val() + $("#path").val();
+            var params = $("#params").val().split("\n").join("&");
+            var callbackName = $("#callbackName").val();
+            $.ajax({
+                url: url,
+                data: params,
+                dataType: "jsonp",
+                jsonpCallback: callbackName,
+                success: function(data) {
+                    console.log(data);
+                }
+            });
+        });
+    });
+
+</script>
+</html>

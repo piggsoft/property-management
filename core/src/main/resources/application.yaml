@@ -1,0 +1,45 @@
+spring:
+  profiles:
+    active: dev
+app:
+  name: Boot Pigg
+  description: ${app.name} is a Spring Boot application
+---
+spring:
+    profiles: dev
+    datasource:
+        url: jdbc:mysql://192.168.199.28:3306/boot
+        username: root
+        password: 123456
+        driver-class-name: com.mysql.jdbc.Driver
+    jpa:
+      show-sql: true
+      format_sql: true
+      generate-ddl: true
+      hibernate:
+        # Hibernate ddl auto (create, create-drop, update)
+        ddl-auto: update
+        naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+      properties:
+        hibernate:
+          dialect: org.hibernate.dialect.MySQL5Dialect
+server:
+    address: 127.0.0.1
+logging:
+      level:
+        root: WARN
+        org.springframework.web: INFO
+        org.hibernate:
+          SQL: trace
+          type.descriptor.sql: trace
+        com.piggsoft: DEBUG
+---
+spring:
+    profiles: prod
+    datasource:
+        url: jdbc:mysql://localhost:3306/test
+        username: root
+        password: root
+        driver-class-name: com.mysql.jdbc.Driver
+server:
+    address: 192.168.1.120
