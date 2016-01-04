@@ -1,6 +1,7 @@
 package com.piggsoft.interceptor;
 
 import com.piggsoft.constants.Constants;
+import com.piggsoft.context.TokenManager;
 import com.piggsoft.dao.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -28,7 +29,7 @@ public class TokenInterceptor implements HandlerInterceptor {
             return true;
         }
         String token = request.getParameter(Constants.REQUEST_TOKEN_NAME);
-
+        System.out.println(TokenManager.get(token));
         /*if (StringUtils.isEmpty(token)) {
             return false;
         }*/

@@ -1,11 +1,11 @@
 package com.piggsoft.config;
 
-import net.sf.ehcache.Ehcache;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.cache.Cache;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cache.ehcache.EhCacheCacheManager;
-import org.springframework.cache.ehcache.EhCacheFactoryBean;
 import org.springframework.cache.ehcache.EhCacheManagerFactoryBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,7 +18,14 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 // 标注启动了缓存
 @EnableCaching
-public class CacheConfiguration {
+public class Config {
+
+    @Bean
+    public ObjectMapper getObjectMapper() {
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+        return mapper;
+    }
 
     @Bean
     public EhCacheManagerFactoryBean getEhCacheFactory(){
@@ -27,8 +34,6 @@ public class CacheConfiguration {
         return factoryBean;
     }
 
-
-
     @Bean
     public CacheManager getCacheManager() {
         return  new EhCacheCacheManager(getEhCacheFactory().getObject());
@@ -36,7 +41,7 @@ public class CacheConfiguration {
 
     @Bean
     public Cache getCache() {
-       return getCacheManager().getCache("demo");
+       return getCacheManager().getCache("token");
     }
 
 }

@@ -7,9 +7,9 @@ import com.piggsoft.constants.ResponseContatns;
  *
  * @author piggsoft@163.com
  */
-public class SuccessResponse extends Response {
+public class SuccessRsp extends Rsp {
 
-    public SuccessResponse() {
+    public SuccessRsp() {
         super(ResponseContatns.SUCCESS.getCode(), ResponseContatns.SUCCESS.getMsg());
     }
 }

@@ -1,12 +1,12 @@
 package com.piggsoft.controller;
 
+import com.piggsoft.context.TokenManager;
 import com.piggsoft.model.User;
-import com.piggsoft.response.Response;
-import com.piggsoft.response.SuccessResponse;
+import com.piggsoft.response.Rsp;
+import com.piggsoft.response.SuccessRsp;
+import com.piggsoft.response.TokenRsp;
 import com.piggsoft.service.UserService;
-import net.sf.ehcache.Ehcache;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.Cache;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -25,20 +25,18 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @Autowired
-    private Cache cache;
-
     @RequestMapping(value = "/create")
-    public Response create(User user) {
+    public Rsp create(User user) {
         userService.create(user);
-        return new SuccessResponse();
+        return new SuccessRsp();
     }
 
     @RequestMapping(value = "/login")
-    public Response login(String username, String password) {
-        userService.login(username, password);
-        System.out.println(cache == null);
-        return new SuccessResponse();
+    public Rsp login(String username, String password) {
+        User user = userService.login(username, password);
+        String token = TokenManager.add(user);
+
+        return new TokenRsp(token);
     }
 
     @RequestMapping(value = "/test")

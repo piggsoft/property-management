@@ -7,7 +7,7 @@ import java.util.List;
  *
  * @author piggsoft@163.com
  */
-public class Response {
+public class Rsp {
     private String code;
     private String msg;
     private String total;
@@ -15,12 +15,12 @@ public class Response {
     private Object item;
 
 
-    public Response(String code, String msg) {
+    public Rsp(String code, String msg) {
         this.code = code;
         this.msg = msg;
     }
 
-    public Response() {
+    public Rsp() {
 
     }
 
