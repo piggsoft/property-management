@@ -35,7 +35,6 @@ public class UserController {
     public Rsp login(String username, String password) {
         User user = userService.login(username, password);
         String token = TokenManager.add(user);
-
         return new TokenRsp(token);
     }
 

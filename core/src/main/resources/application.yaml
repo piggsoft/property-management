@@ -7,32 +7,22 @@ app:
 ---
 spring:
     profiles: dev
-    datasource:
-        url: jdbc:mysql://192.168.199.28:3306/boot
-        username: root
-        password: 123456
-        driver-class-name: com.mysql.jdbc.Driver
-    jpa:
-      show-sql: true
-      format_sql: true
-      generate-ddl: true
-      hibernate:
-        # Hibernate ddl auto (create, create-drop, update)
-        ddl-auto: update
-        naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
-      properties:
-        hibernate:
-          dialect: org.hibernate.dialect.MySQL5Dialect
 server:
     address: 127.0.0.1
 logging:
       level:
         root: WARN
         org.springframework.web: INFO
-        org.hibernate:
-          SQL: trace
-          type.descriptor.sql: trace
         com.piggsoft: DEBUG
+mybatis:
+  configLocation: classpath:/MyBatis.xml
+  mapperLocations: classpath:/mapper/*.xml
+  typeAliasesPackage: com.piggsoft.model
+jdbc:
+  url: jdbc:mysql://192.168.199.28:3306/boot?useUnicode=true&characterEncoding=utf-8
+  username: root
+  password: 123456
+  driverClassName: com.mysql.jdbc.Driver
 ---
 spring:
     profiles: prod

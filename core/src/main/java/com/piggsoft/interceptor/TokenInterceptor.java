@@ -2,10 +2,7 @@ package com.piggsoft.interceptor;
 
 import com.piggsoft.constants.Constants;
 import com.piggsoft.context.TokenManager;
-import com.piggsoft.dao.UserDao;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.util.StringUtils;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -19,9 +16,6 @@ import javax.servlet.http.HttpServletResponse;
  */
 @Component
 public class TokenInterceptor implements HandlerInterceptor {
-
-    @Autowired
-    private UserDao userDao;
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {

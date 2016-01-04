@@ -1,39 +1,20 @@
 package com.piggsoft.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
 import java.io.Serializable;
 
-/**
- * <br>Created by fire pigg on 2015/12/30.
- *
- * @author piggsoft@163.com
- */
-@Entity
-@Table
-public class User implements Serializable {
-
+public class User implements Serializable{
     private static final long serialVersionUID = -1789944008613002088L;
-    @Id
-    @GeneratedValue
     private Integer id;
-    @Column(unique = true, length = 50)
-    private String username;
-    private String password;
-    private String nickname;
-    private String sex;
+
     private String email;
 
-    public String getEmail() {
-        return email;
-    }
+    private String nickname;
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+    private String password;
+
+    private String sex;
+
+    private String username;
 
     public Integer getId() {
         return id;
@@ -43,12 +24,20 @@ public class User implements Serializable {
         this.id = id;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email == null ? null : email.trim();
+    }
+
     public String getNickname() {
         return nickname;
     }
 
     public void setNickname(String nickname) {
-        this.nickname = nickname;
+        this.nickname = nickname == null ? null : nickname.trim();
     }
 
     public String getPassword() {
@@ -56,7 +45,7 @@ public class User implements Serializable {
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.password = password == null ? null : password.trim();
     }
 
     public String getSex() {
@@ -64,7 +53,7 @@ public class User implements Serializable {
     }
 
     public void setSex(String sex) {
-        this.sex = sex;
+        this.sex = sex == null ? null : sex.trim();
     }
 
     public String getUsername() {
@@ -72,6 +61,6 @@ public class User implements Serializable {
     }
 
     public void setUsername(String username) {
-        this.username = username;
+        this.username = username == null ? null : username.trim();
     }
 }
