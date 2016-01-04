@@ -33,7 +33,7 @@
             />
     <cache name="token"
            eternal="false"
-           maxElementsInMemory="100"
+           maxElementsInMemory="100000"
            overflowToDisk="true"
            diskPersistent="false"
            timeToIdleSeconds="0"

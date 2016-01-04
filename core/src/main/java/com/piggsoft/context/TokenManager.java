@@ -32,8 +32,11 @@ public class TokenManager implements InitializingBean{
         if (StringUtils.isEmpty(token)) {
             return null;
         }
-        User user = (User)CACHE.get(token);
-        return user;
+        Cache.ValueWrapper valueWrapper = CACHE.get(token);
+        if (null == valueWrapper) {
+            return null;
+        }
+        return (User)valueWrapper.get();
     }
 
     @Override

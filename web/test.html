@@ -32,7 +32,11 @@
     $(function() {
         $("#send").bind("click", function() {
             var url = $("#url").val() + $("#path").val();
-            var params = $("#params").val().split("\n").join("&");
+            var _params = $("#params").val().split("\n");
+            if (sessionStorage.token) {
+                _params.push("token=" + sessionStorage.token);
+            }
+            var params = _params.join("&");
             var callbackName = $("#callbackName").val();
             $.ajax({
                 url: url,
@@ -41,6 +45,9 @@
                 jsonpCallback: callbackName,
                 success: function(data) {
                     console.log(data);
+                    if (data.token) {
+                        sessionStorage.token = data.token;
+                    }
                 }
             });
         });

@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.io.Serializable;
 
 /**
  * <br>Created by fire pigg on 2015/12/30.
@@ -13,7 +14,9 @@ import javax.persistence.Table;
  */
 @Entity
 @Table
-public class User {
+public class User implements Serializable {
+
+    private static final long serialVersionUID = -1789944008613002088L;
     @Id
     @GeneratedValue
     private Integer id;

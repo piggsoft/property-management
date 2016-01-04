@@ -34,9 +34,7 @@ public class UserService {
     }
 
     public User login(String username, String password) {
-        User user = userDao.findByUsernameAndPassword(username, DigestUtils.md5DigestAsHex(password.getBytes()));
-
-        return user;
+        return userDao.findByUsernameAndPassword(username, DigestUtils.md5DigestAsHex(password.getBytes()));
     }
 
 
