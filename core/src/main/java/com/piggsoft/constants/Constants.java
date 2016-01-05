@@ -13,4 +13,5 @@ public class Constants {
 
     public static final String REQUEST_TOKEN_NAME = "token";
 
+    public static final String JSONP_CALLBACK_PARAM_NAME = "callback";
 }

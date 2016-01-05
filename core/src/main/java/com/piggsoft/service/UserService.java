@@ -30,7 +30,7 @@ public class UserService {
             user.setPassword(Constants.DEFAULT_PASSWORD);
         }
         user.setPassword(DigestUtils.md5DigestAsHex(user.getPassword().getBytes()));
-        userMapper.insert(user);
+        userMapper.insertSelective(user);
         return user;
     }
 

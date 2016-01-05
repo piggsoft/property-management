@@ -1,5 +1,6 @@
 package com.piggsoft.config;
 
+import com.piggsoft.constants.Constants;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.AbstractJsonpResponseBodyAdvice;
 
@@ -12,6 +13,6 @@ import org.springframework.web.servlet.mvc.method.annotation.AbstractJsonpRespon
 public class JsonpAdvice extends AbstractJsonpResponseBodyAdvice {
 
     public JsonpAdvice() {
-        super("callback");
+        super(Constants.JSONP_CALLBACK_PARAM_NAME);
     }
 }

@@ -31,13 +31,6 @@ public class UserController {
         return new SuccessRsp();
     }
 
-    @RequestMapping(value = "/login")
-    public Rsp login(String username, String password) {
-        User user = userService.login(username, password);
-        String token = TokenManager.add(user);
-        return new TokenRsp(token);
-    }
-
     @RequestMapping(value = "/test")
     public Map<String, String> test() {
         Map<String, String> map = new HashMap<>();

@@ -18,6 +18,7 @@ import org.springframework.cache.ehcache.EhCacheManagerFactoryBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
@@ -31,6 +32,7 @@ import javax.sql.DataSource;
 @Configuration
 // 标注启动了缓存
 @EnableCaching
+@EnableTransactionManagement
 @MapperScan("com.piggsoft.mapper")
 public class Config extends WebMvcConfigurerAdapter {
 
