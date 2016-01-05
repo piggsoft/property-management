@@ -45,6 +45,7 @@
         <table tableName="user_role"/>
         <table tableName="user_subject"/>
         <table tableName="file" domainObjectName="FileItem"/>-->
-        <table tableName="user"/>
+        <table tableName="house"/>
+        <table tableName="building"/>
     </context>
 </generatorConfiguration>
