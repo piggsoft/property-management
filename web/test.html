@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title></title>
-    <script src="js/jquery.js"></script>
+    <script src="js/dist/common.js"></script>
+    <script src="js/dist/test.js"></script>
 </head>
 <body>
 <div>
@@ -29,29 +30,6 @@
 </body>
 <script>
 
-    $(function() {
-        $("#send").bind("click", function() {
-            var url = $("#url").val() + $("#path").val();
-            var _params = $("#params").val().split("\n");
-            if (sessionStorage.token) {
-                _params.push("token=" + sessionStorage.token);
-            }
-            var params = _params.join("&");
-            var callbackName = $("#callbackName").val();
-            $.ajax({
-                url: url,
-                data: params,
-                dataType: "jsonp",
-                jsonpCallback: callbackName,
-                success: function(data) {
-                    console.log(data);
-                    if (data.token) {
-                        sessionStorage.token = data.token;
-                    }
-                }
-            });
-        });
-    });
 
 </script>
 </html>

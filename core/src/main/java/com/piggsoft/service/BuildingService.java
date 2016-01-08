@@ -32,4 +32,8 @@ public class BuildingService {
                 .andSsnLike("%" + ssn + "%");
         return buildingMapper.selectByExample(example);
     }
+
+    public Building findById(int id) {
+        return buildingMapper.selectByPrimaryKey(id);
+    }
 }
