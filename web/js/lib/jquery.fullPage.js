@@ -90,7 +90,7 @@
     $.fn.fullpage = function(options) {
 
         // common jQuery objects
-        var $htmlBody = $('html, body');
+        var $htmlBody = $('head, body');
         var $body = $('body');
 
         var FP = $.fn.fullpage;
@@ -541,7 +541,7 @@
 
             //adding a class to recognize the container internally in the code
             container.addClass(WRAPPER);
-            $('html').addClass(ENABLED);
+            $('head').addClass(ENABLED);
 
             container.removeClass(DESTROYED); //in case it was destroyed before initilizing it again
 
@@ -1270,7 +1270,7 @@
 
                 $(scrollSettings.element).animate(
                     scrollSettings.options,
-                options.scrollingSpeed, options.easing).promise().done(function () { //only one single callback in case of animating  `html, body`
+                options.scrollingSpeed, options.easing).promise().done(function () { //only one single callback in case of animating  `head, body`
                     afterSectionLoads(v);
                 });
             }
@@ -1287,7 +1287,7 @@
                 scroll.element = WRAPPER_SEL;
             }else{
                 scroll.options = { 'scrollTop': v.dtop};
-                scroll.element = 'html, body';
+                scroll.element = 'head, body';
             }
 
             return scroll;
@@ -2368,7 +2368,7 @@
         }
 
         /*
-        * Destroys fullpage.js plugin events and optinally its html markup and styles
+        * Destroys fullpage.js plugin events and optinally its head markup and styles
         */
         FP.destroy = function(all){
             FP.setAutoScrolling(false, 'internal');
@@ -2440,7 +2440,7 @@
             });
 
             // remove .fp-enabled class
-            $('html').removeClass(ENABLED);
+            $('head').removeClass(ENABLED);
 
             // remove all of the .fp-viewing- classes
             $.each($body.get(0).className.split(/\s+/), function (index, className) {

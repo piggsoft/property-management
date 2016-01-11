@@ -2,6 +2,10 @@ var config = require("./config");
 var $ = require("jquery");
 var utils = require("./utils");
 require("./css/index.css");
+require("normalize.css");
+require("./css/bootstrap.css");
+require("bootstrap");
+var header = require("html!./common.html");
 
 var computeHeight = function() {
     var bodyHeight = parseInt($(window).height());
@@ -13,6 +17,7 @@ var computeHeight = function() {
 };
 
 $(function() {
+    $("body").prepend(header);
 
     computeHeight();
 
