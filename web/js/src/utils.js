@@ -1,7 +1,9 @@
 var $ = require("jquery");
 
 var checkActionResult = function(opts) {
-
+    if (opts.success) {
+        opts.success(this);
+    }
 };
 
 var action = function(opts) {

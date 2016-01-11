@@ -17,8 +17,10 @@
     "jquery": "^2.1.4",
     "md5": "^2.0.0",
     "node-uuid": "^1.4.7",
-    "reduce-css-calc": "^1.2.0",
-    "style-loader": "^0.13.0",
     "webpack": "^1.12.9"
+  },
+  "devDependencies": {
+    "css-loader": "^0.23.1",
+    "style-loader": "^0.13.0"
   }
 }
