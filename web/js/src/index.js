@@ -2,28 +2,15 @@ var config = require("./config");
 var $ = require("jquery");
 var utils = require("./utils");
 require("./css/index.css");
+require("./css/common.css");
 require("normalize.css");
 require("./css/bootstrap.css");
 require("bootstrap");
 var header = require("html!./common.html");
 
-var computeHeight = function() {
-    var bodyHeight = parseInt($(window).height());
-    var headerHeight = parseInt($("header").outerHeight(true));
-    var navHeight = bodyHeight - headerHeight;
-    var ifarmeHeight = parseInt(navHeight - $("footer").outerHeight(true));
-    $("nav").css({height: navHeight + "px"});
-    $("iframe").css({height: ifarmeHeight + "px"});
-};
 
 $(function() {
     $("body").prepend(header);
-
-    computeHeight();
-
-    function changeIframeSrc(src) {
-        $("#" + config.iframeId).attr("src", src);
-    }
 
     function action() {
         utils.action();
@@ -46,7 +33,4 @@ $(function() {
         }
     });
 
-    $(window).resize(function() {
-       computeHeight();
-    });
 });

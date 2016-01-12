@@ -1,29 +1,52 @@
 var utils = require("./utils");
 
-var checkCanUse = function() {
+var session = null;
+
+var check = function() {
     if(!window || !window.sessionStorage) {
-        console.log("session can`t be use");
+        session = new CookieImpl();
+    } else {
+        session = new SessionStorageImpl();
     }
 };
 
-checkCanUse();
+function SessionStorageImpl() {
+    this.put = function(key, value) {
+        window.sessionStorage.setItem(key, utils.isString(value) ? value : JSON.stringify(value));
+    };
+    this.get = function(key) {
+        window.sessionStorage.getItem(key);
+    };
+    this.remove = function(key) {
+        window.sessionStorage.removeItem(key);
+    };
+    this.clear = function() {
+        window.sessionStorage.clear();
+    };
+}
 
-var put = function(key, value) {
-    window.sessionStorage.setItem(key, utils.isString(value) ? value : JSON.stringify(value));
-};
-var get = function(key) {
-    window.sessionStorage.getItem(key);
-};
-var remove = function(key) {
-    window.sessionStorage.removeItem(key);
-};
-var clear = function() {
-    window.sessionStorage.clear();
-};
+function CookieImpl() {
+    this.put = function(key, value) {
+        utils.setCookie(key, value);
+    };
+    this.get = function(key) {
+        utils.getCookie(key);
+    };
+    this.remove = function(key) {
+        utils.deleteCookie(key);
+    };
+    this.clear = function() {
+        console.log("unsupport action");
+    };
+}
+
+check();
+
+
 
 module.exports = {
-    put: put,
-    get: get,
-    remove: remove,
-    clear: clear
+    put: session.put,
+    get: session.get,
+    remove: session.remove,
+    clear: session.clear
 };

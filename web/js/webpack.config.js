@@ -15,7 +15,9 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 module.exports = {
     entry: {
         //test: "./src/test.js",
-        index: "./src/index.js"
+        index: "./src/index.js",
+        addVillage: "./src/addVillage.js"
+
     },
     output: {
         path: 'dist',
